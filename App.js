@@ -49,13 +49,12 @@ function App() {
     const handleChange = (event) => {
         setQuery(event.target.value);
     
-        const url = 'http://www.omdbapi.com/?s='+query+'&apikey=27472284';
+        const url = 'https://www.omdbapi.com/?s='+query+'&apikey=27472284';
         axios
             .get(url)
             .then((response) => {
-              let n = response.data.Search;
-              setResult(n);
-              console.log(result);
+              let data = response.data.Search;
+              setResult(data);
               let movieList = result.filter((content) => content.Type==='movie');
               let episodeList = result.filter((content) => content.Type==='episode');
               let seriesList = result.filter((content) => content.Type==='series');
